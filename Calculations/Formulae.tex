@@ -46,7 +46,7 @@
 	
 	From $s = v_0t + 0.5at^2$ follows $t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a} \rightarrow s/v_0$ for $a\rightarrow0$ (l'Hospital) and a final velocity of $v_1 = v_0 + at$.
 	
-	Not that the last formula can also be written as $v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa}$, from which we can get the final velocity without calculating the time first.
+	Note that the last formula can also be written as $v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa}$, from which we can get the final velocity without calculating the time first.
 	
 	\subsection{Example}
 	
@@ -58,11 +58,23 @@
 	Then we reach the first destination after $t_1 = \sqrt{2s_1/a_{eff1}} = sqrt(10000km/(0.04km/s^2)) = 500 s = 8.3 min$ with a velocity of $v_1=a_{eff1}t_1=0.04km/s^2\cdot 500s = 20 km/s$, which will be our start speed for the next phase.
 	
 	\paragraph{Phase two.}
-	Now we want to accelerate with a burn of $a_{eff2}=2g=0.02km/s$ until we leave the exosphere. For this, we need to pass another $s2=5000km$. Mind that we now have a non-zero start velocity of $v_1 = 20 km/s$.
+	Now we want to accelerate with a burn of $a_{eff2}=2g=0.02km/s$ until we leave the exosphere. For this, we need to pass another $s_2=5000km$. Mind that we now have a non-zero start velocity of $v_1 = 20 km/s$.
 	
 	Then we reach the second destination after $t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} =\frac{-20+\sqrt{400+200}}{0.02} \approx 224.7 s \approx 3.7 min $ with a final velocity of $v_2 = v_1 + a_{eff_2}t_2 = 20 km/s + 0.02 km/s^2\cdot 224.7 s = 24.5 km/s$.
 	
-	\paragraph{Phase three, first scenario.}
+	\paragraph{Phase three, first scenario.}	
+	Now we want to go to mars and have $s_3 = 60 000 000 km, v_2 = 24.5 km/s$ and $a_{eff3} = 0.01 km/s^2$.
+	
+	Let's calculate the final velocity first, this time. It is $v_3 = \sqrt{v^2_2 + 2sa_{eff3}} = \sqrt{600 + 1 200 000} = 1096 km/s$. With this, we can also calculate the time and we get $t_3 = \frac{-v_2 + v_3}{a_{eff3}} = \frac{-24,5 + 1096}{0,01} = 107150 s = 29.8 h$. So less then thirty hours to get to mars this way. Nice!
+	
+	\paragraph{Phase three, second scenario.}	
+	This time, we somehow need to make sure that our final velocity $v_end$ is zero. We assume that the optimal way is acceleration of $a_{eff4} = 1g$ for one part of the journey, and then deceleration of $a_{eff5} = -1g$ for the second part. Due to our non-zero start velocity, the change won't be exactly at fifty percent.
+	
+	Let's first look at the distance: $s_3 = v_2 + 0.5(a_{eff4}t_4 + a_{eff5}t_5)$ with the two unknowns $t_4$ and $t_5$. We can split this up into $s_4 = v_2 + 0.5a_{eff4}t_4$ and $s_5 = v_3 + 0.5a_{eff5}t_5$, know with the five unknowns  $s_4, s_5, v_3, t_4$ and $t_5$.
+	
+	Our equation for the final velocity also turns into two equations: $v_3 = \sqrt{v^2_2+2s_4a_{eff4}}$ and $v_4 = \sqrt{v^2_3+2s_5a_{eff5}}$.
+	
+	Now let's start rolling this up from the back: $v_4 = \sqrt{v^2_3+2s_5a_{eff5}} = \sqrt{v^2_2+2s_4a_{eff4}+2s_5a_{eff5}} \rightarrow s_5 = \frac{v^2_4-v^2_2-2s_4a_{eff4}}{2a_{eff5}} = \frac{v^2_2+2s_4}{2}$
 	
 	\section{Travel Time With Special Relativity}
 \end{document}
