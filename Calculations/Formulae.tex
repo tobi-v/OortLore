@@ -1,0 +1,68 @@
+\title{Formulae for Oort Lore}
+\author{Odradek}
+\date{\today}
+
+\documentclass[10pt]{article}
+
+\pagestyle{headings}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+
+\begin{document}
+	\maketitle
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+	\begin{abstract}
+		Some derivation for formulas that can be useful to calculate stuff in space.
+	\end{abstract}
+	
+	\section{Notation}
+	
+	\begin{itemize}
+		\item $s$: Distance
+		\item $v_0$: Velocity at the beginning
+		\item $v_{end}$: Velocity at the end
+		\item $a$: Acceleration
+		\item $a_{eff}$: Effective acceleration (any gravitational has been removed: $a_{eff} = a - g$)
+	\end{itemize}
+	
+	When we need them in vector form, they are written as $\vec{s}$ for example.
+	
+	\section{Travel Time Without Relativity}\label{TravelTime}
+	
+	\subsection{Constant speed}
+	
+	From $s = vt$ follows $t = s/v$.
+	
+	\subsection{Under acceleration}
+	
+	From $s = 0.5at^2$ follows $t = \sqrt{2s/a}$ and a final velocity of $v=at$.
+	
+	\subsubsection{With start velocity}
+	
+	From $s = v_0t + 0.5at^2$ follows $t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a} \rightarrow s/v_0$ for $a\rightarrow0$ (l'Hospital) and a final velocity of $v_1 = v_0 + at$.
+	
+	Not that the last formula can also be written as $v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa}$, from which we can get the final velocity without calculating the time first.
+	
+	\subsection{Example}
+	
+	In our example we want to calculate the time and end velocity for a travel from earth to mars with two different outcomes: First we want to go to mars with a constant burn of $1g$ after we have escaped earth. Second we want to arrive at mars with a velocity of zero, but in the shortest time possible with a maximum acceleration of $1g$ after having escaped earth. In both scenarios, mars is supposed to be only $s_m = 0.4 AU = 60 000 000 km$ away from earth, which is still the more than the shortest possible distance.
+	
+	\paragraph{Phase one.}
+	Let's assume we want to escape earth with an effective acceleration of $a_{eff1} = a-g = 4g = 0.04 km/s^2$ until we reach a height of $s_1=5000 km$, which is half of the exosphere. We just assume the computer keeps the effective acceleration at a constant $4g$.
+	
+	Then we reach the first destination after $t_1 = \sqrt{2s_1/a_{eff1}} = sqrt(10000km/(0.04km/s^2)) = 500 s = 8.3 min$ with a velocity of $v_1=a_{eff1}t_1=0.04km/s^2\cdot 500s = 20 km/s$, which will be our start speed for the next phase.
+	
+	\paragraph{Phase two.}
+	Now we want to accelerate with a burn of $a_{eff2}=2g=0.02km/s$ until we leave the exosphere. For this, we need to pass another $s2=5000km$. Mind that we now have a non-zero start velocity of $v_1 = 20 km/s$.
+	
+	Then we reach the second destination after $t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} =\frac{-20+\sqrt{400+200}}{0.02} \approx 224.7 s \approx 3.7 min $ with a final velocity of $v_2 = v_1 + a_{eff_2}t_2 = 20 km/s + 0.02 km/s^2\cdot 224.7 s = 24.5 km/s$.
+	
+	\paragraph{Phase three, first scenario.}
+	
+	\section{Travel Time With Special Relativity}
+\end{document}
