@@ -60,7 +60,7 @@
 	
 	\subsection{Example}
 	
-	In our example we want to calculate the time and end velocity for a travel from earth to mars with two different outcomes: First we want to go to mars with a constant burn of $1g$ after we have escaped earth. Second we want to arrive at mars with a velocity of zero, but in the shortest time possible with a maximum acceleration of $1g$ after having escaped earth. In both scenarios, mars is supposed to be only $s_m = 0.4 AU = 60 000 000 km$ away from earth, which is still the more than the shortest possible distance.
+	In our example we want to calculate the time and end velocity for the journey of the Agnus. We start escaping the earth with four and two g at first, then take a trip to the asteroid belt with an acceleration and deceleration of one g, switching gears at mars.
 	
 	\paragraph{Phase one.}
 	Let's assume we want to escape earth with an effective acceleration of $a_{eff1} = a-g = 4g = 0.04 km/s^2$ until we reach a height of $s_1=5000 km$, which is half of the exosphere. We just assume the computer keeps the effective acceleration at a constant $4g$.
@@ -72,20 +72,16 @@
 	
 	Then we reach the second destination after $t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} =\frac{-20+\sqrt{400+200}}{0.02} \approx 224.7 s \approx 3.7 min $ with a final velocity of $v_2 = v_1 + a_{eff_2}t_2 = 20 km/s + 0.02 km/s^2\cdot 224.7 s = 24.5 km/s$.
 	
-	\paragraph{Phase three, first scenario.}	
+	\paragraph{Phase three}	
 	Now we want to go to mars and have $s_3 = 60 000 000 km, v_2 = 24.5 km/s$ and $a_{eff3} = 0.01 km/s^2$.
 	
 	Let's calculate the final velocity first, this time. It is $v_3 = \sqrt{v^2_2 + 2sa_{eff3}} = \sqrt{600 + 1 200 000} = 1096 km/s$, which is about $0.3 \%$ of the speed of light and we expect not much relativistic effects here. With this, we can also calculate the time and we get $t_3 = \frac{-v_2 + v_3}{a_{eff3}} = \frac{-24,5 + 1096}{0,01} = 107150 s = 29.8 h$. So less then thirty hours to get to mars this way. Nice!
 	
-	\paragraph{Phase three, second scenario.}	
-	This time, we need to make sure that our final velocity $v_{end}$ is zero. We assume that the optimal journey is is achieved by an acceleration of $a_{eff4} = 1g$ for the first part, and a deceleration of $a_{eff5} = -1g$ for the second part. Due to our non-zero start velocity, the change won't be exactly at fifty percent.
+	\paragraph{Phase four, braking}
 	
-	Let's first look at the distance: $s_3 = v_2 t_4 + v_3t_5 + 0.5(a_{eff4}t^2_4 + a_{eff5}t^2_5)$ with the two unknowns $v_3, t_4$ and $t_5$. We can split this up into $s_4 = v_2 t_4 + 0.5a_{eff4}t^2_4$ and $s_5 = v_3 t_5 + 0.5a_{eff5}t^2_5$, now with the five unknowns  $s_4, s_5, v_3, t_4$ and $t_5$.
+	We wold like to have a velocity of $v_1 = 20 km/s$ when we reach the asteroid belt. So we will further accelerate with $a_4 = 1 g$ for $0.1 AU$ and then decelerate with $a_5 = -1 g$.
 	
-	Our equation for the final velocity also turns into two equations: $v_3 = \sqrt{v^2_2+2s_4 a_{eff4}}$ and $v_4 = \sqrt{v^2_3+2s_5 a_{eff5}}$.
 	
-	Now let's start rolling this up from the back: $v_4 = \sqrt{v^2_3+2s_5 a_{eff5}} = \sqrt{v^2_2+2s_4 a_{eff4}+2s_5a_{eff5}} = 0 \rightarrow s_5 = \frac{v^2_4-v^2_2-2s_4a_{eff4}}{2a_{eff5}} = \frac{v^2_2+2s_4}{2}$. Now let's insert $s_4 = s_3 - s_5$ and we get $s_5 = \frac{v^2_2 + 2(s_3 - s_5)}{2} \rightarrow 2s_5 = \frac{v^2_2 + 2s_3}{2} = 24.5^2/2 + 60 000 000 = 60 000 300 km \rightarrow s_5 = 30 000 150 km, s_4 = 29 999 850 km$.
 	
-	From this, we can calculate the times and final velocities. $v_3 = \sqrt{v^2_2 + 2s_4 a_{eff4}} = \sqrt{600 + 599 997} = 775 km/s, v_4 = \sqrt{v^2_3 + 2s_5 a_{eff5}} = \sqrt{600 625 - 600 003} \approx 24.5$. There must be a mistake somewhere.
 	\section{Travel Time With Special Relativity}
 \end{document}
