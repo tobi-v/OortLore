@@ -8,6 +8,9 @@
 
 \usepackage[margin=3cm]{geometry}
 \usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{amsmath}
+
+\numberwithin{equation}{section}
 
 \begin{document}
 	\maketitle
@@ -20,7 +23,9 @@
 		Some derivation for formulas that can be useful to calculate stuff in space.
 	\end{abstract}
 	
-	\section{Notation}
+	\section{Conventions and Prerequisites}
+	
+	\subsection{Notation}
 	
 	\begin{itemize}
 		\item $s$: Distance
@@ -31,6 +36,8 @@
 	\end{itemize}
 	
 	When we need them in vector form, they are written as $\vec{s}$ for example.
+	
+	\subsection{Setup of the solar system}
 	
 	\section{Travel Time Without Relativity}\label{TravelTime}
 	
@@ -50,34 +57,72 @@
 	
 	\subsection{Under acceleration}
 	
-	From $s = 0.5at^2$ follows $t = \sqrt{2s/a}$ and a final velocity of $v=at$.
+	From
+	
+	\begin{equation}
+		s = 0.5at^2
+	\end{equation}
+	
+	follows
+	
+	\begin{equation}
+		t = \sqrt{2s/a}
+	\end{equation}
+	
+	and a final velocity of
+	
+	\begin{equation}
+		v=at.
+	\end{equation}
 	
 	\subsubsection{With start velocity}
 	
-	From $s = v_0t + 0.5at^2$ follows $t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a} \rightarrow s/v_0$ for $a\rightarrow0$ (l'Hospital) and a final velocity of $v_1 = v_0 + at$.
+	From
 	
-	Note that the last formula can also be written as $v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa}$, from which we can get the final velocity without calculating the time first.
+	\begin{equation}
+		s = v_0t + 0.5at^2
+	\end{equation}
 	
-	\subsection{Example}
+	follows
 	
-	In our example we want to calculate the time and end velocity for the journey of the Agnus. We start escaping the earth with four and two g at first, then take a trip to the asteroid belt with an acceleration and deceleration of one g, switching gears at mars.
+	\begin{equation}\label{eq:1}
+		t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a}
+	\end{equation}
 	
-	\paragraph{Phase one.}
+	and a final velocity of
+	
+	\begin{equation}
+		v_1 = v_0 + at.
+	\end{equation}
+	
+	Note that the last formula can with the help of (\ref{eq:1}) also be written as
+	
+	\begin{equation}
+		v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa},
+	\end{equation}
+	
+	from which we can get the final velocity without calculating the time first.
+	
+	\section{Agnus Journey Without Relativity}
+	
+	In our example we want to calculate the time and end velocity for the journey sections of the Agnus. We start escaping earth with four and two g at first, then take a trip to the asteroid belt with an acceleration and deceleration of one g, switching gears shortly after mars.
+	
+	\paragraph{Phase one: First half of atmosphere.}
 	Let's assume we want to escape earth with an effective acceleration of $a_{eff1} = a-g = 4g = 0.04 km/s^2$ until we reach a height of $s_1=5000 km$, which is half of the exosphere. We just assume the computer keeps the effective acceleration at a constant $4g$.
 	
 	Then we reach the first destination after $t_1 = \sqrt{2s_1/a_{eff1}} = sqrt(10000km/(0.04km/s^2)) = 500 s = 8.3 min$ with a velocity of $v_1=a_{eff1}t_1=0.04km/s^2\cdot 500s = 20 km/s$, which will be our start speed for the next phase.
 	
-	\paragraph{Phase two.}
+	\paragraph{Phase two: Second half of atmosphere.}
 	Now we want to accelerate with a burn of $a_{eff2}=2g=0.02km/s$ until we leave the exosphere. For this, we need to pass another $s_2=5000km$. Mind that we now have a non-zero start velocity of $v_1 = 20 km/s$.
 	
 	Then we reach the second destination after $t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} =\frac{-20+\sqrt{400+200}}{0.02} \approx 224.7 s \approx 3.7 min $ with a final velocity of $v_2 = v_1 + a_{eff_2}t_2 = 20 km/s + 0.02 km/s^2\cdot 224.7 s = 24.5 km/s$.
 	
-	\paragraph{Phase three}	
+	\paragraph{Phase three: Mars.}	
 	Now we want to go to mars and have $s_3 = 60 000 000 km, v_2 = 24.5 km/s$ and $a_{eff3} = 0.01 km/s^2$.
 	
 	Let's calculate the final velocity first, this time. It is $v_3 = \sqrt{v^2_2 + 2sa_{eff3}} = \sqrt{600 + 1 200 000} = 1096 km/s$, which is about $0.3 \%$ of the speed of light and we expect not much relativistic effects here. With this, we can also calculate the time and we get $t_3 = \frac{-v_2 + v_3}{a_{eff3}} = \frac{-24,5 + 1096}{0,01} = 107150 s = 29.8 h$. So less then thirty hours to get to mars this way. Nice!
 	
-	\paragraph{Phase four, braking}
+	\paragraph{Phase four: Asteroid belt.}
 	
 	We wold like to have a velocity of $v_1 = 20 km/s$ when we reach the asteroid belt. So we will further accelerate with $a_4 = 1 g$ for $0.1 AU$ and then decelerate with $a_5 = -1 g$.
 	
