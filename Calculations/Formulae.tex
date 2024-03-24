@@ -9,6 +9,7 @@
 \usepackage[margin=3cm]{geometry}
 \usepackage[colorlinks=true, linkcolor=blue]{hyperref}
 \usepackage{amsmath}
+\usepackage{siunitx}
 
 \numberwithin{equation}{section}
 
@@ -27,6 +28,8 @@
 	
 	\subsection{Notation}
 	
+	\subsection{Variable Names}
+	
 	\begin{itemize}
 		\item $s$: Distance
 		\item $v_0$: Velocity at the beginning
@@ -37,95 +40,115 @@
 	
 	When we need them in vector form, they are written as $\vec{s}$ for example.
 	
-	\subsection{Setup of the solar system}
+	\subsection{Units}
+	
+	We are using either $km$ or $AU$ instead of $m$.
+	
+	\begin{itemize}
+		\item $AU$: Astronomical Unit. $1 AU \approx$ \SI{149e+6}{\km}.
+	\end{itemize}
+	
+	\subsection{Constants}
+	
+	\begin{itemize}
+		\item $G \approx$ \SI{6.674e-18}{\N\km\squared\per\kg\squared}
+	\end{itemize}
+	
+	\subsection{Setup of the Solar System}
+	
+	\begin{tabular}{l r r}
+		Celestial Body & Distance [\unit{\astronomicalunit}] & Mass [\unit{\kg}]\\
+		Sun & 0 & \\
+		Mercury & 0.4 & \\
+		Venus & 0.72 & \\
+		Earth & 1 & \\
+		Mars & 1.5 & \\
+		Asteroid Belt & 2.2-2.3 & \\
+		Jupiter & 5.2 & \\
+		Saturn & 9.5 & \\
+		Uranus & 19 & \\
+		Neptune & 30.1 & \\
+		Pluto & 39 & \\
+		Kuiper Belt & 30-50 & \\
+		Scattered Disc & 50-1000 & \\
+		Oort Cloud & (2000-5000)-(\num{10000}-\num{100000}) & \\
+	\end{tabular}
 	
 	\section{Travel Time Without Relativity}\label{TravelTime}
 	
-	\subsection{Constant speed}
+	\subsection{Constant Speed}
 	
-	From 
-	
+	From	
 	\begin{equation}
-		s = vt
-	\end{equation}
-	
+		s = vt	\end{equation}	
 	follows
-
 	\begin{equation}
-		t = s/v.
-	\end{equation}
+		t = s/v. \end{equation}
 	
-	\subsection{Under acceleration}
+	\subsection{Under Acceleration}
 	
-	From
-	
+	From	
 	\begin{equation}
-		s = 0.5at^2
-	\end{equation}
-	
-	follows
-	
+		s = 0.5at^2	\end{equation}
+	follows	
 	\begin{equation}
-		t = \sqrt{2s/a}
-	\end{equation}
-	
-	and a final velocity of
-	
+		t = \sqrt{2s/a}	\end{equation}	
+	and a final velocity of	
 	\begin{equation}
-		v=at.
-	\end{equation}
+		v=at. \end{equation}
 	
-	\subsubsection{With start velocity}
+	\subsubsection{With Start Velocity}
 	
-	From
-	
+	From	
 	\begin{equation}
-		s = v_0t + 0.5at^2
-	\end{equation}
-	
-	follows
-	
+		s = v_0t + 0.5at^2 \end{equation}	
+	follows	
 	\begin{equation}\label{eq:1}
-		t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a}
-	\end{equation}
-	
-	and a final velocity of
-	
+		t = \frac{-v_0 + \sqrt{v^2_0 + 2sa}}{a}	\end{equation}	
+	and a final velocity of	
 	\begin{equation}
-		v_1 = v_0 + at.
-	\end{equation}
-	
-	Note that the last formula can with the help of (\ref{eq:1}) also be written as
-	
+		v_1 = v_0 + at.	\end{equation}	
+	Note that the last formula can with the help of (\ref{eq:1}) also be written as	
 	\begin{equation}
-		v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa},
-	\end{equation}
-	
+		v_1=v_0 + (-v_0 + \sqrt{v^2_0+2sa}) = \sqrt{v^2_0+2sa},	\end{equation}	
 	from which we can get the final velocity without calculating the time first.
 	
 	\section{Agnus Journey Without Relativity}
 	
-	In our example we want to calculate the time and end velocity for the journey sections of the Agnus. We start escaping earth with four and two g at first, then take a trip to the asteroid belt with an acceleration and deceleration of one g, switching gears shortly after mars.
+	In our example we want to calculate the time and end velocity for the journey sections of the Agnus. We start escaping earth with four and two g at first, then take a trip to the asteroid belt with an acceleration and deceleration of one g, switching gears shortly after mars. We assume that Mars is currently located at a distance of $\SI{0.5}{\astronomicalunit} = \SI{74.8e+6}{\km}$.
 	
 	\paragraph{Phase one: First half of atmosphere.}
-	Let's assume we want to escape earth with an effective acceleration of $a_{eff1} = a-g = 4g = 0.04 km/s^2$ until we reach a height of $s_1=5000 km$, which is half of the exosphere. We just assume the computer keeps the effective acceleration at a constant $4g$.
+	we want to escape earth with an effective acceleration of $a_{eff1} = a-g = 4g = \SI{0.04}{\km\per\s\squared}$ until we reach a height of $s_1= \SI{5000}{\km}$, which is half of the exosphere. We just assume the computer keeps the effective acceleration at a constant $4g$.
 	
-	Then we reach the first destination after $t_1 = \sqrt{2s_1/a_{eff1}} = sqrt(10000km/(0.04km/s^2)) = 500 s = 8.3 min$ with a velocity of $v_1=a_{eff1}t_1=0.04km/s^2\cdot 500s = 20 km/s$, which will be our start speed for the next phase.
+	Then we reach the first destination after	
+	\begin{equation}
+		t_1 = \sqrt{2s_1/a_{eff1}} = \sqrt{\frac{\SI{10000}{km}}{\SI{0.04}{\km\per\s\squared}}} = \SI{500}{\s} = \SI{8.3}{\min}	\end{equation}	
+	with a velocity of
+	\begin{equation}
+		v_1=a_{eff1}t_1=\SI{0.04}{\km\per\s\squared} \cdot \SI{500}{\s} = \SI{20}{\km\per\s}, \end{equation}	
+	which will be our start speed for the next phase.
 	
 	\paragraph{Phase two: Second half of atmosphere.}
-	Now we want to accelerate with a burn of $a_{eff2}=2g=0.02km/s$ until we leave the exosphere. For this, we need to pass another $s_2=5000km$. Mind that we now have a non-zero start velocity of $v_1 = 20 km/s$.
+	Now we want to accelerate with a burn of $a_{eff2}=2g=\SI{0.02}{\km\per\s\squared}$ until we leave the exosphere. For this, we need to pass another $s_2=\SI{5000}{\km}$. Mind that we now have a non-zero start velocity of $v_1 = \SI{20}{\km\per\s}$.
 	
-	Then we reach the second destination after $t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} =\frac{-20+\sqrt{400+200}}{0.02} \approx 224.7 s \approx 3.7 min $ with a final velocity of $v_2 = v_1 + a_{eff_2}t_2 = 20 km/s + 0.02 km/s^2\cdot 224.7 s = 24.5 km/s$.
+	Then we reach the second destination after
+	\begin{equation}
+		t_2 = \frac{-v_1+\sqrt{v^2_1+2s_2a_{eff2}}}{a_{eff2}} = \frac {\SI{-20}{\km\per\s}+\sqrt{\SI{400}{\km\squared\per\s\squared}+\SI{200}{\km\squared\per\s\squared}}} {\SI{0.02}{\km\per\s\squared}}
+		\approx \SI{224.7}{\s} \approx \SI{3.7}{\min} \end{equation}
+	with a final velocity of
+	\begin{equation}
+		v_2 = v_1 + a_{eff_2}t_2
+		= \SI{20}{\km\per\s} + \SI{0.02}{\km\per\s\squared} \cdot \SI{224.7}{\s}
+		= \SI{24.5}{\km\per\s}. \end{equation}
 	
 	\paragraph{Phase three: Mars.}	
-	Now we want to go to mars and have $s_3 = 60 000 000 km, v_2 = 24.5 km/s$ and $a_{eff3} = 0.01 km/s^2$.
+	Now we want to go to mars and have $s_3 = \SI{74.8e+6}{\km}, v_2 = \SI{24.5}{\km\per\s}$ and $a_{eff3} = \SI{0.01}{\km\per\s\squared}$.
 	
 	Let's calculate the final velocity first, this time. It is $v_3 = \sqrt{v^2_2 + 2sa_{eff3}} = \sqrt{600 + 1 200 000} = 1096 km/s$, which is about $0.3 \%$ of the speed of light and we expect not much relativistic effects here. With this, we can also calculate the time and we get $t_3 = \frac{-v_2 + v_3}{a_{eff3}} = \frac{-24,5 + 1096}{0,01} = 107150 s = 29.8 h$. So less then thirty hours to get to mars this way. Nice!
 	
 	\paragraph{Phase four: Asteroid belt.}
 	
-	We wold like to have a velocity of $v_1 = 20 km/s$ when we reach the asteroid belt. So we will further accelerate with $a_4 = 1 g$ for $0.1 AU$ and then decelerate with $a_5 = -1 g$.
-	
+	We wold like to have a velocity of $v_1 = 24.5 km/s$ when we reach the asteroid belt. So we will further accelerate with $a_4 = 1 g$ for $0.1 AU$ and then decelerate with $a_5 = -1 g$ for $1.1 AU$.	
 	
 	
 	\section{Travel Time With Special Relativity}
