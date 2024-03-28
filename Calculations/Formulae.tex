@@ -156,9 +156,9 @@
 		= \SI{120049}{\s} = \SI{33.3}{\hour}. \end{equation}
 	So a little more than thirty hours to get to mars this way. Nice!
 	
-	\paragraph{Phase four: Asteroid belt.}
+	\paragraph{Phase four: To the asteroid belt.}
 	
-	We wold like to have a velocity of $v_2 = \SI{24.5}{\km\per\s}$ again when we reach the asteroid belt in order to be slow down enough to dodge asteroids. To achieve this, we will further accelerate with $a_4 = 1 g$ for $s_4 = \SI{0.1}{\astronomicalunit}$ and then decelerate with $a_5 = -1 g$ for $s_5 = \SI{0.6}{\astronomicalunit}$.
+	We would like to have a velocity of $v_2 = \SI{24.5}{\km\per\s}$ again when we reach the asteroid belt in order to be slow down enough to dodge asteroids. To achieve this, we will further accelerate with $a_4 = 1 g$ for $s_4 = \SI{0.1}{\astronomicalunit}$ and then decelerate with $a_5 = -1 g$ for $s_5 = \SI{0.6}{\astronomicalunit}$.
 	\begin{equation}
 		v_4 = \sqrt{v^2_3 + 2s_4 a_4}
 		= \sqrt{\SI{1500625}{\km\squared\per\s\squared} + \SI{300000}{\km\squared\per\s\squared}}
@@ -173,9 +173,26 @@
 		= \SI{31}{\km\per\s} \end{equation}
 	\begin{equation}
 		t_5 = \frac{-v_4 + v_5}{a_5}
-	= \frac{\SI{-1342}{\km\per\s} + \SI{31}{\km\per\s}}{\SI{-0.01}{\km\per\s\squared}}
-	= \SI{131100}{\s} = \SI{36.4}{\hour} \end{equation}
+		= \frac{\SI{-1342}{\km\per\s} + \SI{31}{\km\per\s}}{\SI{-0.01}{\km\per\s\squared}}
+		= \SI{131100}{\s} = \SI{36.4}{\hour} \end{equation}
+	It can be assumed that the difference in the final velocity origins in rounding errors.
 	
+	\paragraph{Phase five: Through the asteroid belt.}
+	
+	Under the assumption that we did reach the final velocity of $v_2 = \SI{24.5}{\km\per\s}$ - which we will maintain - and that the asteroid belt spans $s_6 = \SI{0.1}{\astronomicalunit}$, the passage takes
+	\begin{equation}
+		t_6 = s_6 / v_2 = \frac{\SI{15e+6}{\km}}{\SI{24.5}{\km\per\s}} = \SI{612e+3}{\s}
+		= \SI{170}{\hour}. \end{equation}
+	That takes way to long, so let's add an acceleration of 1 g to that:	
+	\begin{equation}
+		v_6 = \sqrt{v^2_2 + 2s_6 a_4}
+		= \sqrt{\SI{600}{\km\squared\per\s\squared} + \SI{300000}{\km\squared\per\s\squared}}
+		= \SI{548}{\km\per\s} \end{equation}
+	\begin{equation}
+		t_6 = \frac{-v_2 + v_6}{a_4}
+		= \frac{\SI{-24.5}{\km\per\s} + \SI{548}{\km\per\s}}{\SI{0.01}{\km\per\s\squared}}
+		= \SI{52350}{\s} = \SI{14.5}{\hour} \end{equation}
+	Now that looks better.
 	
 	\section{Travel Time With Special Relativity}
 \end{document}
