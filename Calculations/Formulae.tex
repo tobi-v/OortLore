@@ -12,9 +12,45 @@
 \usepackage{siunitx}
 \usepackage{pgfplots}
 
+\usetikzlibrary{intersections}
+
+\makeatletter
+\tikzset{%
+	clear global paths/.style={
+		execute at end picture=\clear@global@paths,
+		name path global/.append code={
+			\ifx\global@paths\pgfutil@empty
+			\gdef\global@paths{##1}%
+			\else
+			\xdef\global@paths{\global@paths,##1}%
+			\fi
+		}
+	},
+	clear global paths now/.code={
+		\expandafter\global\expandafter\let\csname tikz@intersect@path@name@#1\endcsname=\relax
+	}
+}
+\let\global@paths=\pgfutil@empty
+\def\clear@global@paths{%
+	\edef\@temp{\noexpand\pgfkeys{/tikz/clear global paths now/.list={\global@paths}}}%
+	\@temp
+	\global\let\global@paths=\pgfutil@empty
+	\global\let\tikz@intersect@namedpaths=\pgfutil@empty
+}
+\makeatother
+
 \numberwithin{equation}{section}
 
 \begin{document}
+	\newcommand*{\ShowIntersection}[2]{
+		\fill 
+		[name intersections={of=#1 and #2, name=i, total=\t}] 
+		[red, opacity=1, every node/.style={above left, black, opacity=1}] 
+		\foreach \s in {1,...,\t}{(i-\s) circle (2pt)
+			%node [above left] {\s}
+			};
+	}
+	
 	\maketitle
 	\newpage
 	
@@ -198,43 +234,62 @@
 	\paragraph{Phase six: Out to oort.}
 	
 	Constant acceleration of $1 g$ is kept. We want to have a nice chart, in which we can see when we arrive at which planet's orbit. This is delivered by the function
-	\begin{equation}
-		s(t) = s_0 + v_6 t + \frac{1}{2} g t^2
-		= \SI{330e+6}{\km} + \SI{548}{\km\per\s} t + \SI{0.01}{\km\per\s\squared} t^2
-		= \SI{2.2}{\astronomicalunit} + \SI{13.152e-3}{\astronomicalunit\per\hour} t
-			+ \SI{864e-3}{\astronomicalunit\per\hour\squared} t^2,\end{equation}
+	\begin{equation} \begin{aligned}
+		s(t) & = s_0 + v_6 t + \frac{1}{2} g t^2
+		= \SI{330e+6}{\km} + \SI{548}{\km\per\s} t + \SI{0.01}{\km\per\s\squared} t^2 \\
+		& = \SI{2.2}{\astronomicalunit} + \SI{13.152e-3}{\astronomicalunit\per\hour} t
+			+ \SI{864e-6}{\astronomicalunit\per\hour\squared} t^2, \end{aligned} \end{equation}
 	where we have switched the units from $km$ and $s$ to $au$ and $h$.
 	
-	\begin{tikzpicture}
-		\begin{axis}[ 
-			xlabel=Time $t$,
-			ylabel={Distance $km$},
+	\begin{tikzpicture}[clear global paths]
+		\begin{axis}[
+			xlabel={Time $t[h]$},
+			ylabel={Distance $s[au]$},
 			xmin = 0,
 			xmax = 250,
 			ymin = 0,
-			ymax = 60] 
-			\addplot [domain=0:250] {2.2 + 0.012152*x + 0.000864*x^2};
-			\addplot [domain=0:250, color=red] {5.2} node[above,pos=0.8] {Jupiter};
-			\addplot [domain=0:250, color=violet] {9.5} node[above,pos=0.8] {Saturn};
-			\addplot [domain=0:250, color=blue] {19} node[above,pos=0.8] {Uranus};
-			\addplot [domain=0:250, color=cyan] {30.1} node[above,pos=0.8] {Neptune};
-			\addplot [domain=0:250, color=orange] {39} node[above,pos=0.8] {Pluto};
-			\fill [fill=green, nearly transparent] (0,500) -- (250,500) -- (250,300) -- (0,300) node[above,pos=0.8] {Kuiper Belt};
+			ymax = 60]
+			
+			\addplot [name path global=leavingTrajectoryClose, domain=0:250] {2.2 + 0.012152*x + 0.000864*x^2};			
+			\addplot [name path global=jupiterOrbit, domain=0:250, color=red] {5.2} node[above,pos=0.8] {Jupiter};
+			\addplot [name path global=saturnOrbit, domain=0:250, color=violet] {9.5} node[above,pos=0.8] {Saturn};
+			\addplot [name path global=uranusOrbit, domain=0:250, color=blue] {19} node[above,pos=0.8] {Uranus};
+			\addplot [name path global=neptuneOrbit, domain=0:250, color=cyan] {30.1} node[above,pos=0.8] {Neptune};
+			\addplot [name path global=plutoOrbit, domain=0:250, color=orange] {39} node[above,pos=0.8] {Pluto};
+			\fill [name path global=kuiperBelt, fill=green, nearly transparent] (0,500) -- (250,500) -- (250,300) -- (0,300) node[above,pos=0.8] {Kuiper Belt};
+			
+			\ShowIntersection{leavingTrajectoryClose}{jupiterOrbit}
+			\ShowIntersection{leavingTrajectoryClose}{saturnOrbit}
+			\ShowIntersection{leavingTrajectoryClose}{uranusOrbit}
+			\ShowIntersection{leavingTrajectoryClose}{neptuneOrbit}
+			\ShowIntersection{leavingTrajectoryClose}{plutoOrbit}
+			\ShowIntersection{leavingTrajectoryClose}{kuiperBelt}
 		\end{axis}
-	\end{tikzpicture}	
-	\begin{tikzpicture}
-		\begin{axis}[ 
-			xlabel=Time $t$,
-			ylabel={Distance $km$},
+	\end{tikzpicture}
+	\begin{tikzpicture}[clear global paths]
+		\begin{axis}[
+			xlabel={Time $t[h]$},
+			ylabel={Distance $s[au]$},
 			xmin = 0,
 			xmax = 2000,
 			ymin = 0,
 			ymax = 4000]
-			\addplot [domain=0:2000] {2.2 + 0.012152*x + 0.000864*x^2};
-			\fill [fill=red, nearly transparent] (0,100) -- (200,100) -- (200,5) -- (0,5) node[above,pos=0.8] {Scattered Disc};
-			\fill [fill=blue, nearly transparent] (0,1000) -- (200,1000) -- (200,200) -- (0,200)node[above,pos=0.8] {Oort};
+			
+			\addplot [name path global=leavingTrajectoryDistant, domain=0:2000] {2.2 + 0.012152*x + 0.000864*x^2};
+			\fill [name path global=scatteredDisc, fill=red, nearly transparent] (0,100) -- (200,100) -- (200,5) -- (0,5) node[above,pos=0.8] {Scattered Disc};
+			\fill [name path global=Oort, fill=blue, nearly transparent] (0,1000) -- (200,1000) -- (200,200) -- (0,200)node[above,pos=0.8] {Oort};
+			
+			\ShowIntersection{leavingTrajectoryDistant}{scatteredDisc}
+			\ShowIntersection{leavingTrajectoryDistant}{Oort}
 		\end{axis}
 	\end{tikzpicture}
+	
+	Oort cloud is reached after about $63$ days with a velocity of
+	\begin{equation} \begin{aligned}
+		v_{oort} & = \sqrt{v^2_6 + 2s_{oort} g}
+		= \sqrt{\SI{13.152e-3}{\astronomicalunit\per\hour} + 2 \cdot \SI{197.8}{\astronomicalunit}\SI{864e-6}{\astronomicalunit\per\hour\squared}} \\
+		& = \SI{596e-3}{\astronomicalunit\per\hour} = \SI{24824}{\km\per\s}, \end{aligned} \end{equation}
+	which is about $8\%$ of the speed of light.
 	
 	\section{Travel Time With Special Relativity}
 \end{document}
