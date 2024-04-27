@@ -9,6 +9,8 @@ public class CelestialBody : MonoBehaviour
     public double Radius_km;
     [SerializeField]
     public Vector3 InitialPosition;
+    [SerializeField]
+    public Vector3 InitialVelocity;
 
     public double Mass => mass;
     private double mass;                        // Unit: Solar Masses

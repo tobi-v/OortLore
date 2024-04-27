@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3492692487582019041, guid: 6240518a6f3c30c4abd13a46a3256368, type: 3}
+      propertyPath: InitialPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492692487582019041, guid: 6240518a6f3c30c4abd13a46a3256368, type: 3}
+      propertyPath: InitialVelocity.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8094481089736542827, guid: 6240518a6f3c30c4abd13a46a3256368, type: 3}
       propertyPath: m_Name
       value: Earth
