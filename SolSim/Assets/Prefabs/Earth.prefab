@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4234489828845016583, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
       propertyPath: m_Name
-      value: Planet
+      value: Earth
       objectReference: {fileID: 0}
     - target: {fileID: 7259088765321536413, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,22 @@ PrefabInstance:
     - target: {fileID: 7259088765321536413, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858080145082331533, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
+      propertyPath: Radius
+      value: 6371
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858080145082331533, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
+      propertyPath: Radius_km
+      value: 6371
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858080145082331533, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
+      propertyPath: Mass_earths
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858080145082331533, guid: 73b2e92a04759444ab645f5548cba563, type: 3}
+      propertyPath: InitialPosition_au.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

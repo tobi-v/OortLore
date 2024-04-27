@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8438511486565812865, guid: 92d741ca7723b9946b2d10f6b5452107, type: 3}
+      propertyPath: Radius_km
+      value: 696340
+      objectReference: {fileID: 0}
+    - target: {fileID: -8438511486565812865, guid: 92d741ca7723b9946b2d10f6b5452107, type: 3}
+      propertyPath: Mass_earths
+      value: 333000
+      objectReference: {fileID: 0}
     - target: {fileID: 1492710949875263343, guid: 92d741ca7723b9946b2d10f6b5452107, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5389036782676185845, guid: 92d741ca7723b9946b2d10f6b5452107, type: 3}
       propertyPath: m_Name
-      value: Planet
+      value: Sun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
