@@ -23,7 +23,7 @@ public class CelestialBody : MonoBehaviour
     private Visualizer visualizer;
 
     private void Awake() {
-        mass = Mass_earths / Constants.SolarMass_InEarths;
+        mass = Mass_earths / Util.Mass.Sun;
         transform.position = InitialPosition;
 
         scale = radius = Radius_km / Constants.Au_InKm;
