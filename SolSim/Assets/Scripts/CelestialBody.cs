@@ -11,7 +11,7 @@ public class CelestialBody : MonoBehaviour
     [SerializeField]
     public Vector3 InitialPosition;
     [SerializeField]
-    public Vector3 InitialVelocity;
+    public Vector3 InitialVelocity;             // Unit: km/s
 
     public double Mass => mass;
     private double mass;                        // Unit: Solar Masses
@@ -30,7 +30,7 @@ public class CelestialBody : MonoBehaviour
         transform.localScale *= (float)radius;
 
         rb = GetComponent<Rigidbody>();
-        rb.velocity = InitialVelocity;
+        rb.velocity = InitialVelocity / (float)Constants.Au_InKm;
 
         visualizer = GetComponent<Visualizer>();
         visualizer.SetScale(Radius_km / Constants.EarthRadius_InKm, scale);
