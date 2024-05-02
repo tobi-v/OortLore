@@ -145,7 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222979505094057625, guid: 1e24f6c946b8be6498103f01c3e8ae72, type: 3}
       propertyPath: InitialVelocity.z
-      value: 1
+      value: 29.7848
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222979505094057625, guid: 1e24f6c946b8be6498103f01c3e8ae72, type: 3}
+      propertyPath: InitialVelovity_kms.z
+      value: 29.7848
       objectReference: {fileID: 0}
     - target: {fileID: 7011659869899749328, guid: 1e24f6c946b8be6498103f01c3e8ae72, type: 3}
       propertyPath: m_LocalPosition.x
